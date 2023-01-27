@@ -8,11 +8,11 @@ const getApiDogs = async () => {
         return {
             id: dog.id,
             name: dog.name,
-            weight: dog.weight.metric,
-            height: dog.height.metric,
+            weight: dog.weight,
+            height: dog.height,
             age: dog.life_span,
             image: dog.image.url,
-            temperament: dog.temperament,
+            temperament: dog.temperament?.split(",").map(temperament => temperament.trim()).filter((item, index, self) => self.indexOf(item) === index),
         }
     });
     return mapData;
