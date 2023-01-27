@@ -11,23 +11,23 @@ import './Form.css'
 
 // validador de errores de los inputs
 const validateText = (input) => {
-    // const err = {};
+    const err = {};
 
-    // if (!input.name) err.name = "Name is a required field!";
-    // else if (input.name.length > 40) err.name = "Name must be under 40 characters.";
+    if (!input.name) err.name = "Name is a required field!";
+    else if (input.name.length > 40) err.name = "Name must be under 40 characters.";
 
-    // if (!input.height) err.height = 'You must provide a height!'
-    // else if (input.height < 5) err.height = "The dog must be higher";
-    // else if (isNaN(input.height)) err.height = "The height must be a number.";
+    if (!input.height) err.height = 'You must provide a height!'
+    else if (input.height < 5) err.height = "The dog must be higher";
+    else if (isNaN(input.height)) err.height = "The height must be a number.";
 
-    // if (!input.weight) err.weight = "You must provide a weight!";
-    // else if (input.weight < 1) err.weight = "The breed must weigh more than 1kg.";
-    // else if (isNaN(input.weight)) err.weight = "The weight must be a number.";
+    if (!input.weight) err.weight = "You must provide a weight!";
+    else if (input.weight < 1) err.weight = "The breed must weigh more than 1kg.";
+    else if (isNaN(input.weight)) err.weight = "The weight must be a number.";
 
-    // if (input.age && input.age < 3) err.age = "The life span must be bigger than 3 years.";
-    // else if (input.age && isNaN(input.age)) err.age = "The life span must be a number.";
+    if (input.age && input.age < 3) err.age = "The life span must be bigger than 3 years.";
+    else if (input.age && isNaN(input.age)) err.age = "The life span must be a number.";
 
-    // return err;
+    return err;
 };
 
 
@@ -169,31 +169,13 @@ const Creator = () => {
                             <div className="opFields">
                                 <input className="createField imageField" name="image" type="text" value={input.image} onChange={handleChange} placeholder="Insert URL" />
 
-                                <select className="createBox" defaultValue='default' name="grupo" onChange={handleChange}>
-                                    <option value="default" disabled>Breed group:</option>
-                                    {grupos.length ? grupos.map(el => (
-                                        el ? <option key={el} value={el}>
-                                            {el}
-                                        </option> : null
-                                    )) : null}
-                                </select>
-
-                                <select className="createBox" defaultValue='default' name="funcion" onChange={handleChange}>
-                                    <option value="default" disabled>Breed for:</option>
-                                    {funciones.length ? funciones.map(el => (
-                                        el ? <option key={el} value={el}>
-                                            {el}
-                                        </option> : null
-                                    )) : null}
-                                </select>
-
                                 <select className="createBox" defaultValue='default' onChange={handleSelect}>
                                     <option value="default" disabled>Temperament:</option>
-                                    {temperamentState.length ? temperamentState.map(t => (
-                                        <option key={t.id} value={t.name}>
-                                            {t.name}
+                                    {temperamentState?.map(t => (
+                                        <option key={t} value={t}>
+                                            {t}
                                         </option>
-                                    )) : null}
+                                    ))}
                                 </select>
                             </div>
                         </div>
@@ -240,7 +222,7 @@ const Creator = () => {
                     </ul>
                 </div>
             </div>
-        </div>    )
+        </div>)
 }
 
 export default Creator;

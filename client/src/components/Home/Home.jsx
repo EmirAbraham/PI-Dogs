@@ -119,16 +119,17 @@ const Home = () => {
 
 
             <div className="containerDogs">
-                {Array.isArray(dogs) ? (dogsMostrados.length ? dogsMostrados.map(dog => {
+                {Array.isArray(dogs) ? (dogsMostrados.length ? dogsMostrados?.map(dog => {
                     return (
                         <Card 
+                            key= {dog.id}
                             id = {dog.id}
                             name = {dog.name}
                             image = {dog.image}
                             weight = {dog.weight}
                             height = {dog.height}
                             age = {dog.age}
-                            temperaments = {dog.temperaments}
+                            temperament = {dog.temperament}
                         />
                     );
                 }) : <Loader />) : <div className="home404">{dogs.msg}</div>}

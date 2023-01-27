@@ -31,8 +31,8 @@ function Filters({ setMinNP, setMaxNP, setPagActual, temperBox, createdBox }) {
             <option key={0} value="all">All</option>
 
             {temperamentsState?.map(t => (
-                <option key={t.id} value={t.name}>
-                  {t.name}
+                <option key={t} className="fieldTemp" value={t}>
+                  {t}
                 </option>
               ))}
           </select>

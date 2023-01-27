@@ -24,7 +24,7 @@ function rootReducer(state = initialState, action) {
         case 'GET_TEMPERAMENTS':
             return {
                 ...state,
-                temperaments: action.payload.split(",")
+                temperaments: action.payload
             }
 
 

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { getById, clearDetail, getDogs, deleteDog } from '../../redux/actions/actions.js'
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link, useHistory  } from "react-router-dom";
 import RandomDog from "../RandomDog/RandomDog.jsx";
 // import Updater from "../Updater/Updater.jsx";
@@ -9,34 +7,37 @@ import Logo from '../../img/logo.png';
 import LinkedIn from '../../img/linkedin.png';
 import GitHub from '../../img/github.png';
 import IconArrow from './IconArrow'
+import axios from 'axios'
 import './Detail.css'
 
 const Detail = () => {
     const { id } = useParams();
-    const history = useHistory();
-    const dispatch = useDispatch();
-    const details = useSelector(state => state.details);
-    const dogs = useSelector(state => state.dogs);
-    const [showUpdater, setShowUpdater] = useState(false); 
-
-    const handleDelete = async () => {
-        const res = await dispatch(deleteDog(id))
-        alert(res.payload);
-        history.push('/home');
-    }
-
-    const handleUpdate = () => setShowUpdater(true);
+    const [doggys, setDoggys] = useState({}); 
 
     useEffect(() => {
-        dispatch(getById(id));
-        dispatch(clearDetail());
-    }, [dispatch, id]);
-
-
-    useEffect(() => {
-        ! dogs.length && dispatch(getDogs())
-    }, [dispatch, dogs]);
-
+        async function fetchData() {
+          try {
+            const response = await axios.get(`http://localhost:3001/dogs/${id}`);
+            const dog = response.data;
+            if (dog.id) {
+                setDoggys({
+                id: dog.id,
+                name: dog.name,
+                weight: dog.weight,
+                image: dog.image,
+                height: dog.height,
+                age: dog.age,
+                temperament: dog.temperament,
+              });
+            } else {
+              alert("Doggy is not available");
+            }
+          } catch (err) {
+            alert(err.message);
+          }
+        }
+        fetchData();
+      }, [id]);
 
     return (
         <div className="detail">
@@ -57,67 +58,33 @@ const Detail = () => {
                 </div>
             </div>
            
-            { Object.keys(details).length && typeof details !== 'string' ? (
+            { Object.keys(doggys).length && typeof doggys !== 'string' ? (
                 <div className="detailBody">
                     <div className="detVisual">
-                        <h1 className="detTitulo pseudoTitle1">{details.nombre}</h1>
-                        <img src={details.image} alt={details.nombre + ' img'} /> 
-                        {details.funcion || details.grupo ? (
-                            <div className="adicional">
-                                {details.funcion ? <p className="subtitleImg">This dog is specifically bred for {details.funcion}.</p> : null}
-                                {details.grupo ? <p className="subtitleImg">Its breed belongs to the group of {details.grupo}.</p> : null}
-                                {(! details.funcion || ! details.grupo) ? <p className="fake">invisible line so css doesnt mess up :D</p> : null}
-                            </div>
-                        ) : null}
+                        <h1 className="detTitulo pseudoTitle1">{doggys.name}</h1>
+                        <img src={doggys.image} alt={doggys.name + ' img'} /> 
                     </div>
 
                     <div className="detDescripcion">
                         <div className="detText">
-                            <h1 className={(details.nombre.length > 20) ? "detTituloGrande pseudoTitle2" : "detTitulo pseudoTitle2"}>{details.nombre}</h1>
-                            <div className="itemDet"><span className="detCat">Height: </span><p className="holder">{details.altura} cm</p></div>
-                            <div className="itemDet"><span className="detCat">Weight: </span><p className="holder">{details.peso} kg</p></div>
-                            {details.lifetime && details.lifetime[0] !== ' ' ? <div className="itemDet"><span className="detCat">Life span: </span><p className="holder">{details.lifetime}</p></div> : null}
+                            <h1 className={(doggys.name.length > 20) ? "detTituloGrande pseudoTitle2" : "detTitulo pseudoTitle2"}>{doggys.name}</h1>
+                            <div className="itemDet"><span className="detCat">Height: </span><p className="holder">{doggys.height.metric} cm</p></div>
+                            <div className="itemDet"><span className="detCat">Weight: </span><p className="holder">{doggys.weight.metric} kg</p></div>
+                            {doggys.age && doggys.age[0] !== ' ' ? <div className="itemDet"><span className="detCat">Life span: </span><p className="holder">{doggys.age}</p></div> : null}
                         </div>
 
                         <div className="detTemps">
                             {/* dogs api */}
                             {
-                                typeof details.temperaments === 'string' && details.temperaments.length
-                                ? (details.temperaments.length ? <div><p className="temp">{details.temperaments}</p></div> : null)
-                                : null
-                            }
-                            {/* dogs creados en la db */}
-                            {
-                                Array.isArray(details.temperaments) && details.temperaments.length
-                                ? <div><p className="temp">{details.temperaments.map(t => Object.values(t)).join(', ')}.</p></div>
+                                Array.isArray(doggys.temperament) && doggys.temperament.length
+                                ? (doggys.temperament.length ? <div><p className="temp">{doggys.temperament?.map(temp => <span>{temp}, </span>)}</p></div> : null)
                                 : null
                             }
                         </div>
                     </div>
-
-                    {(typeof details.id === 'string') ? details.id.includes("-") &&
-                    <div className="buttonsWrapper">
-                        <button className="updateButton" onClick={handleUpdate}>Update</button>
-                        <button className="deleteButton" onClick={handleDelete}>Delete</button>
-                    </div> : null}
                 </div>
-
                 
-            ) : (
-                Array.isArray(details) 
-                ? <div className="loaderDetail"><Loader /></div>
-                : <div className="detail404">
-                    <div className="404msj">
-                        <h1>{details}</h1>
-                    </div>
-                </div>
-            )}
-
-
-            {showUpdater && <div className="updaterWindow">
-                {/* <Updater id={id} setShowUpdater={setShowUpdater} /> */}
-            </div>}
-
+            ) : null}
 
             <div className="footerDet">
                 <div className="credits">
