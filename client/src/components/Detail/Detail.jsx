@@ -68,16 +68,16 @@ const Detail = () => {
                     <div className="detDescripcion">
                         <div className="detText">
                             <h1 className={(doggys.name.length > 20) ? "detTituloGrande pseudoTitle2" : "detTitulo pseudoTitle2"}>{doggys.name}</h1>
-                            <div className="itemDet"><span className="detCat">Height: </span><p className="holder">{doggys.height.metric} cm</p></div>
-                            <div className="itemDet"><span className="detCat">Weight: </span><p className="holder">{doggys.weight.metric} kg</p></div>
-                            {doggys.age && doggys.age[0] !== ' ' ? <div className="itemDet"><span className="detCat">Life span: </span><p className="holder">{doggys.age}</p></div> : null}
+                            <div className="itemDet"><span className="detCat">Height: </span><p className="holder">{doggys.height} cm</p></div>
+                            <div className="itemDet"><span className="detCat">Weight: </span><p className="holder">{doggys.weight} kg</p></div>
+                            {doggys.age && doggys.age[0] !== ' ' ? <div className="itemDet"><span className="detCat">Age: </span><p className="holder">{doggys.age}</p></div> : null}
                         </div>
 
                         <div className="detTemps">
                             {/* dogs api */}
-                            {
+                            { 
                                 Array.isArray(doggys.temperament) && doggys.temperament.length
-                                ? (doggys.temperament.length ? <div><p className="temp">{doggys.temperament?.map(temp => <span>{temp}, </span>)}</p></div> : null)
+                                ? (doggys.temperament.length ? <div>Temperaments:<p className="temp">{doggys.temperament?.map(temp => <span>{temp}, </span>)}</p></div> : null)
                                 : null
                             }
                         </div>
@@ -90,7 +90,7 @@ const Detail = () => {
                 <div className="credits">
                     <ul>
                         <li>
-                            <a className="bau" href="/about">Bautista Sánchez, 2022</a>
+                            <a className="bau" href="/about">Emir Abraham, 2023</a>
                         </li>
                         <li>
                             <ul>
@@ -98,7 +98,7 @@ const Detail = () => {
                             </ul>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/baut-s/"><img width="30" height="30" src={LinkedIn} alt="linkedin"/></a>
+                            <a href="https://www.linkedin.com/in/emirabraham/"><img width="30" height="30" src={LinkedIn} alt="linkedin"/></a>
                         </li>
                         <li>
                             <ul>
@@ -106,7 +106,7 @@ const Detail = () => {
                             </ul>
                         </li>
                         <li>
-                            <a href="https://github.com/bautt-s"><img width="30" height="30" src={GitHub} alt="github"/></a>
+                            <a href="https://github.com/EmirAbraham"><img width="30" height="30" src={GitHub} alt="github"/></a>
                         </li>
                     </ul>
                 </div>

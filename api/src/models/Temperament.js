@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('Temperament', {
+  sequelize.define('temperament', {
     id: {                       
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -16,4 +16,11 @@ module.exports = (sequelize) => {
     },
   },
     {timestamps:false});
+    // sequelize.models.temperament.associate = (models) => {
+    //   sequelize.models.temperament.belongsToMany(models.dog, {
+    //     through: 'dogs_temperaments',
+    //     as: 'dog',
+    //     foreignKey: 'temperamentid',
+    //   });
+    // }
 };

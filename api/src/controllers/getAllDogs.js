@@ -10,8 +10,8 @@ const getAllDogs = async () => {
         return{
                 id: dog.id,
                 name: dog.name,
-                weight: dog.weight.metric,
-                height: dog.height.metric,
+                weight: dog.weight,
+                height: dog.height,
                 age: dog.age,
                 image: dog.image,
                 temperament: dog.temperament,

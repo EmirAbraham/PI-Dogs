@@ -19,17 +19,17 @@ const Card = ({ id, name, image, weight, height, age, temperament }) => {
                 </div>
 
                 <div className="cardText">
-                    <h2 className="cardTitle">{name} Name</h2>
-                    <h4 className="cardSub">{weight.metric} kg</h4>
-                    <h4 className="cardSub">{height.metric} m</h4>
-                    <h4 className="cardSub">{age}</h4>
-                    <div className="temp-wrapper">
-                        <p className="cardTemp">{temperament?.map((string, index) => (
-                            <span className="cardSub" key={string}>
+                    <h2 className="cardTitle">{name}</h2>
+                    <h4 className="cardSub">Weight: {weight} kg</h4>
+                    <h4 className="cardSub">Height: {height} cm</h4>
+                    <h4 className="cardSub">Age: {age}</h4>
+                    <div className="cardTemp"> Temperaments:
+                        {temperament?.map((string, index) => (
+                            <p className="cardTemp" key={string}>
                                 {string}
                                 {index !== temperament.length - 1 ? " " : ""}
-                            </span>
-                        ))}</p>
+                            </p>
+                        ))}
 
                     </div>
                 </div>

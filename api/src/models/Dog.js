@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('Dog', {
+  sequelize.define('dog', {
     id: {
       type: DataTypes.UUID, // para generar un id aleatorio unico.
       defaultValue: DataTypes.UUIDV4,
@@ -35,4 +35,11 @@ module.exports = (sequelize) => {
     },
   },
   {timestamps:false});
+  // sequelize.models.dog.associate = (models) => {
+  //   sequelize.models.dog.belongsToMany(models.temperament, {
+  //     through: 'dogs_temperaments',
+  //     as: 'temperament',
+  //     foreignKey: 'dogid',
+  //   });
+  // };
 };

@@ -45,6 +45,8 @@ const Creator = () => {
     const grupos = Array.from(new Set(dogs.map(d => d.grupo)));
 
     // tracker de temperamentos de la DB, errores y el estado de los inputs
+
+    const temperamentsState = useSelector(state => state.temperaments)
     const [tempDB, setTempDB] = useState([]);
     const [errors, setErrors] = useState({});
     const [started, setStarted] = useState(true);
@@ -160,19 +162,16 @@ const Creator = () => {
                         <div className="areaOpcional">
                             <div className="opLabels">
                                 <label className="createLabel">Image:</label>
-                                <label className="createLabel pseudoLbl">Group:</label>
-                                <label className="createLabel pseudoLbl">Breed for:</label>
                                 <label className="createLabel pseudoLbl tempLbl">temperament:</label>
                                 <label className="createLabel pseudoLbl hiddenLbl">Temps:</label>
                             </div>
 
                             <div className="opFields">
                                 <input className="createField imageField" name="image" type="text" value={input.image} onChange={handleChange} placeholder="Insert URL" />
-
                                 <select className="createBox" defaultValue='default' onChange={handleSelect}>
                                     <option value="default" disabled>Temperament:</option>
-                                    {temperamentState?.map(t => (
-                                        <option key={t} value={t}>
+                                    {temperamentsState?.map(t => (
+                                        <option key={t} className="fieldTemp" value={t}>
                                             {t}
                                         </option>
                                     ))}
@@ -180,14 +179,14 @@ const Creator = () => {
                             </div>
                         </div>
 
-                        {/* <ul className="selectedTemps">
+                        { <ul className="selectedTemps">
                             {tempDB.map((temp, id) => (
                                 <li className="selTempItem" key={id}>
                                     <button className="deleteSelectedTemp" value={temp} onClick={e => handleDelete(e)}>x</button>
                                     {temp}
                                 </li>
                             ))}
-                        </ul> */}
+                        </ul> }
 
                         <div className="breedButton">
                             <button className={Object.keys(errors).length || started ? "breedSubmit submitDisabled" : "breedSubmit"} type="submit">Create Breed</button>
@@ -198,7 +197,7 @@ const Creator = () => {
                 {Object.keys(errors).length
                     ? <ul className="inputErrors">
                         {Object.keys(errors).map(e => {
-                            return <li className="errorItem">{errors[e]}</li>
+                            return <li key={e} className="errorItem">{errors[e]}</li>
                         })}
                     </ul> : null}
 

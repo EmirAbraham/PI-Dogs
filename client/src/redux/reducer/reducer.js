@@ -55,14 +55,14 @@ function rootReducer(state = initialState, action) {
             const nameSorted =
             action.payload === 'asc'
                 ? state.dogs.sort((a, b) => {
-                    if (a.nombre > b.nombre) return 1;
-                    if (a.nombre < b.nombre) return -1;
+                    if (a.name > b.name) return 1;
+                    if (a.name < b.name) return -1;
                     return 0;
                 })
 
                 : state.dogs.sort((a, b) => {
-                    if (a.nombre > b.nombre) return -1;
-                    if (a.nombre < b.nombre) return 1;
+                    if (a.name > b.name) return -1;
+                    if (a.name < b.name) return 1;
                     return 0;
                 })
             ;
@@ -79,21 +79,21 @@ function rootReducer(state = initialState, action) {
             const pesoOrdenado =
             (action.payload === "menor")
                 ? state.dogs.sort((a, b) => {
-                    if (a.peso.includes('NaN')) {
+                    if (a.weight.includes('NaN')) {
                     return 1000;
                     } else {
-                        if (parseInt(a.peso.split(' - ')[0]) > parseInt(b.peso.split(' - ')[0])) return 1;
-                        if (parseInt(a.peso.split(' - ')[0]) < parseInt(b.peso.split(' - ')[0])) return -1;
+                        if (parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])) return 1;
+                        if (parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])) return -1;
                         return 0;
                     }
                 })
 
                 : state.dogs.sort((a, b) => {
-                    if (a.peso.includes('NaN')) {
+                    if (a.weight.includes('NaN')) {
                     return 1000;
                     } else {
-                        if (parseInt(a.peso.split(' - ')[0]) > parseInt(b.peso.split(' - ')[0])) return -1;
-                        if (parseInt(a.peso.split(' - ')[0]) < parseInt(b.peso.split(' - ')[0])) return 1;
+                        if (parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])) return -1;
+                        if (parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])) return 1;
                         return 0;
                     }
                 })
@@ -113,7 +113,7 @@ function rootReducer(state = initialState, action) {
             allDogs.forEach(e => {
                 if (typeof e.id === 'string') {
                     e.temperaments.forEach(t => {
-                        if (t.nombre === action.payload) filterDB.push(e);
+                        if (t.name === action.payload) filterDB.push(e);
                     })
                 }
             });

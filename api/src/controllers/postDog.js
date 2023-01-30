@@ -20,12 +20,12 @@ const createDog = async (
     if (responseDb.length) return 'There is already a dog with that name';
 
     await Dog.create({
-        name,
-        height,
-        weight,
-        age,
-        image,
-        createInDb,
+        name: name,
+        height: height,
+        weight: weight,
+        age: age,
+        image: image,
+        createInDb: true,
     });
 
     const findDogByName = await Dog.findAll({
@@ -33,9 +33,9 @@ const createDog = async (
     });
 
     temperament.forEach(async (element) => {
-      await Temperament.create({
-        DogId: findDogByName[0].id,
-        TemperamentId: element,
+      await dogs_temperaments.create({
+        dogid: findDogByName[0].id,
+        temperamentid: element,
       });
     });
     const findDogbyPk = await Dog.findByPk(findDogByName[0].id);
