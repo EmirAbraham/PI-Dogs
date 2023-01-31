@@ -112,8 +112,8 @@ function rootReducer(state = initialState, action) {
             const filterDB = [];
             allDogs.forEach(e => {
                 if (typeof e.id === 'string') {
-                    e.temperaments.forEach(t => {
-                        if (t.name === action.payload) filterDB.push(e);
+                    e.temperaments?.forEach(t => {
+                        if (t === action.payload) filterDB.push(e);
                     })
                 }
             });

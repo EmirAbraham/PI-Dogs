@@ -35,7 +35,7 @@ html, body {
 
 .selectorPaginas {
     position: absolute;
-    background: rgba(249,166,108,1);
+    background: rgb(80, 80, 80);
     border: 1px solid #aa8787;
     top: 550px;
     border-top-right-radius: 20px;
@@ -168,8 +168,8 @@ body::-webkit-scrollbar-track {
 }
    
 body::-webkit-scrollbar-thumb {
-    background: rgb(241,122,126);
-    background: linear-gradient(360deg, rgba(241,122,126,1) 0%, rgba(249,166,108,1) 35%, rgba(255,201,75,1) 100%);
+    background: rgb(80, 80, 80);
+    background: linear-gradient(360deg, rgb(180, 180, 180) 0%, rgb(105, 105, 105) 35%, rgb(47, 47, 47) 100%);
 }
 
 /* ---------------------------------------------------------------------------------------------------------------------------------
@@ -279,3 +279,5 @@ body::-webkit-scrollbar-thumb {
     .containerDogs {margin-top: 360px}
     .homeRnd {margin-top: -20px}
 }
+
+

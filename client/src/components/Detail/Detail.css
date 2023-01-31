@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap');
 
 .detail {
-    background: rgb(241,122,126);
+    background: rgb(255, 255, 255);
     background: linear-gradient(360deg, rgb(0, 0, 0) 0%, rgb(95, 95, 95) 35%, rgb(255, 255, 255) 100%);
     background-position: center; 
     background-size: cover;
@@ -147,7 +147,7 @@
     max-width: 500px;
     color: #181111;
     text-decoration: underline;
-    text-decoration-color: rgba(241,122,126,1);
+    text-decoration-color: rgb(0, 0, 0);
 }
 
 .detailBody .detDescripcion .detCat {
@@ -183,7 +183,7 @@
 }
 
 .updateButton {
-    background-color: rgb(241, 173, 70);
+    background-color: rgb(0, 0, 0);
     border: none;
     font-family: 'Rubik', sans-serif;
     font-weight: 700;
@@ -194,7 +194,7 @@
 }
 
 .deleteButton {
-    background-color: rgb(228, 111, 115);
+    background-color: rgb(0, 0, 0);
     border: none;
     font-family: 'Rubik', sans-serif;
     font-weight: 700;
@@ -205,10 +205,10 @@
     margin-left: 10px;
 }
 
-.deleteButton:hover { background-color: rgb(206, 95, 99) }
-.deleteButton:active { background-color: rgb(187, 83, 87); color: white }
-.updateButton:hover { background-color: rgb(218, 157, 65) }
-.updateButton:active { background-color: rgb(190, 138, 59) }
+.deleteButton:hover { background-color: rgb(121, 121, 121) }
+.deleteButton:active { background-color: rgb(106, 106, 106); color: white }
+.updateButton:hover { background-color: rgb(61, 61, 61) }
+.updateButton:active { background-color: rgb(57, 57, 57) }
 
 .footerDet {
     margin-top: 73px;
@@ -393,7 +393,7 @@
         font-weight: 900;
         color: #181111;
         text-decoration: underline;
-        text-decoration-color: rgba(241,122,126,1);
+        text-decoration-color: rgb(23, 23, 23);
         text-align: center;
         margin-left: 40px
     }

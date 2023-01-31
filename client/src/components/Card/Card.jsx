@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-const Card = ({ id, name, image, weight, height, age, temperament }) => {
+const Card = ({ id, name, image, weight, height, age, temperament, createInDb }) => {
     // cuando creo razas en la DB, vienen como array de obj. 
     // asi las connvierto a string (iguales a las de la API)
 
@@ -32,6 +32,20 @@ const Card = ({ id, name, image, weight, height, age, temperament }) => {
                         ))}
 
                     </div>
+                    {/* <div className="cardTemp"> Temperaments:
+                        {createInDb ? temperament?.map((string, index) => (
+                            <p className="cardTemp" key={string}>
+                                {string}
+                                {index !== temperament.length - 1 ? " " : ""}
+                            </p>
+                        )) : temperament?.map((string, index) => (
+                            <p className="cardTemp" key={string}>
+                                {string}
+                                {index !== temperament.length - 1 ? " " : ""}
+                            </p>
+                        ))}
+
+                    </div> */}
                 </div>
             </Link>
         </div>
