@@ -130,7 +130,9 @@ const Home = () => {
                             weight = {dog.weight}
                             height = {dog.height}
                             age = {dog.age}
+                            temperaments = {dog.temperaments}
                             temperament = {dog.temperament}
+                            createInDb = {dog.createInDb}
                         />
                     );
                 }) : <Loader />) : <div className="home404">{dogs.msg}</div>}

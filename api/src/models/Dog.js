@@ -35,11 +35,5 @@ module.exports = (sequelize) => {
     },
   },
   {timestamps:false});
-  // sequelize.models.dog.associate = (models) => {
-  //   sequelize.models.dog.belongsToMany(models.temperament, {
-  //     through: 'dogs_temperaments',
-  //     as: 'temperament',
-  //     foreignKey: 'dogid',
-  //   });
-  // };
+
 };
