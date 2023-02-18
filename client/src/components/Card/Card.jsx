@@ -20,7 +20,7 @@ const Card = ({ id, name, image, weight, height, age, temperaments, createInDb, 
                     <h4 className="cardSub">Weight: {weight} kg</h4>
                     <h4 className="cardSub">Height: {height} cm</h4>
                     <h4 className="cardSub">Age: {age}</h4>
-                    <div className="cardTemp"> Temperaments:
+                    <h4 className="cardSub"> Temperaments:
                         {createInDb ?
                             temperaments?.map((string, index) => (
                                 <p className="cardTemp" key={string}>
@@ -35,7 +35,7 @@ const Card = ({ id, name, image, weight, height, age, temperaments, createInDb, 
                                 </p>
                             ))
                         }
-                    </div>
+                    </h4>
                 </div>
             </Link>
         </div>

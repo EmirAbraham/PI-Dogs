@@ -74,16 +74,16 @@ const Detail = () => {
                             {doggys.age && doggys.age[0] !== ' ' ? <div className="itemDet"><span className="detCat">Age: </span><p className="holder">{doggys.age}</p></div> : null}
                         </div>
 
-                        <div className="detTemps">
+                        <div className="detText">
                             {/* dogs api */}
                             { console.log(doggys)}
                                 {doggys.createInDb === true ?
                                 Array.isArray(doggys.temperaments) && doggys.temperaments.length
-                                ? (doggys.temperaments.length ? <div>Temperaments:<p className="temp" >{doggys.temperaments?.map(temp => <span key={temp}>{temp}, </span>)}</p></div> : null)
+                                ? (doggys.temperaments.length ? <div className="itemDet"><span className="detCat">Temperaments: </span><p className="temp" >{doggys.temperaments?.map(temp => <span key={temp}>{temp}, </span>)}</p></div> : null)
                                 : null
                                 :
                                 Array.isArray(doggys.temperament) && doggys.temperament.length
-                                ? (doggys.temperament.length ? <div>Temperaments:<p className="temp">{doggys.temperament?.map(temp => <span key={temp}>{temp}, </span>)}</p></div> : null)
+                                ? (doggys.temperament.length ? <div className="itemDet"><span className="detCat">Temperaments: </span><p className="temp">{doggys.temperament?.map(temp => <span key={temp}>{temp}, </span>)}</p></div> : null)
                                 : null
                             }
                         </div>
