@@ -15,7 +15,7 @@ const getDbDogs = async () => {
       },
     })
   
-    const formattedDogs = dbDogs.map(dbDog => {
+    const formattedDogs = dbDogs?.map(dbDog => {
       return {
         id: dbDog.id,
         name: dbDog.name,
@@ -24,7 +24,7 @@ const getDbDogs = async () => {
         age: dbDog.age,
         image: dbDog.image,
         createInDb: dbDog.createInDb,
-        temperaments: dbDog.temperaments.map(temperament => temperament.name),
+        temperaments: dbDog.temperaments?.map(temperament => temperament.name),
       }
     })
   

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, useHistory  } from "react-router-dom";
+import { useParams, Link  } from "react-router-dom";
 import RandomDog from "../RandomDog/RandomDog.jsx";
 // import Updater from "../Updater/Updater.jsx";
-import Loader from "../Loader/Loader.jsx";
 import Logo from '../../img/logo.png';
 import LinkedIn from '../../img/linkedin.png';
 import GitHub from '../../img/github.png';
@@ -28,6 +27,8 @@ const Detail = () => {
                 height: dog.height,
                 age: dog.age,
                 temperament: dog.temperament,
+                temperaments: dog.temperaments,
+                createInDb: dog.createInDb,
               });
             } else {
               alert("Doggy is not available");
@@ -75,9 +76,14 @@ const Detail = () => {
 
                         <div className="detTemps">
                             {/* dogs api */}
-                            { 
+                            { console.log(doggys)}
+                                {doggys.createInDb === true ?
+                                Array.isArray(doggys.temperaments) && doggys.temperaments.length
+                                ? (doggys.temperaments.length ? <div>Temperaments:<p className="temp" >{doggys.temperaments?.map(temp => <span key={temp}>{temp}, </span>)}</p></div> : null)
+                                : null
+                                :
                                 Array.isArray(doggys.temperament) && doggys.temperament.length
-                                ? (doggys.temperament.length ? <div>Temperaments:<p className="temp">{doggys.temperament?.map(temp => <span>{temp}, </span>)}</p></div> : null)
+                                ? (doggys.temperament.length ? <div>Temperaments:<p className="temp">{doggys.temperament?.map(temp => <span key={temp}>{temp}, </span>)}</p></div> : null)
                                 : null
                             }
                         </div>

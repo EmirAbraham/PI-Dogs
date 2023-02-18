@@ -4,13 +4,6 @@ import { Link } from "react-router-dom";
 
 
 const Card = ({ id, name, image, weight, height, age, temperaments, createInDb, temperament }) => {
-    // cuando creo razas en la DB, vienen como array de obj. 
-    // asi las connvierto a string (iguales a las de la API)
-    // if (Array.isArray(temperament)) {
-    //     temperament.forEach(t => aux += t.name + ", ");
-    //     temperament = aux.slice(0, -2);
-    // }
-
 
     return (
         <div className="container">
