@@ -107,17 +107,16 @@ function rootReducer(state = initialState, action) {
 
         case 'SORT_BY_TEMPERAMENT':
             const allDogs = state.dogsCopy;
-            const filterDog = (action.payload === 'all') ? allDogs : allDogs.filter(e => e.temperaments?.includes(action.payload));
+            const filterDog = (action.payload === 'all') ? allDogs : allDogs.filter(e => e.temperament?.includes(action.payload));
 
             const filterDB = [];
             allDogs.forEach(e => {
                 if (typeof e.id === 'string') {
-                    e.temperaments?.forEach(t => {
-                        if (t === action.payload) filterDB.push(e);
+                    e.temperament?.forEach(t => {
+                        if (t === action.payload) filterDB.push(t);
                     })
                 }
             });
-
             return {
                 ...state,
                 dogs: filterDog.concat(filterDB)
